@@ -1,38 +1,46 @@
-# CevizJS - Basit JSON Veritabanı Kütüphanesi
+# CevizJS
 
-CevizJS, JSON dosyasında veri saklayan basit bir veritabanı kütüphanesidir. Tek bir dosya ile çalışır ve verilerinizi JSON formatında saklar.
+**CevizJS** basit, taşınabilir ve kolay kullanımlı bir JSON veritabanı
+kütüphanesidir. Tek bir dosya kullanarak verilerinizi saklayabilir,
+sorgulayabilir, güncelleyebilir ve yedekleyebilirsiniz. Özellikle küçük projeler
+ve kişisel kullanım için idealdir.
+
+---
 
 ## Özellikler
-- **Şema Oluşturma**: `createSchema(schemaName)` ile şema oluşturun.
-- **Veri Ekleme**: `create(schemaName, data)` ile veri ekleyin.
-- **Veri Alma**: `getAll(schemaName)` ile tüm verileri alın.
-- **Veri Güncelleme**: `update(schemaName, id, data)` ile veriyi güncelleyin.
-- **Veri Silme**: `delete(schemaName, id)` ile veri silin.
-- **Veri Sıralama**: `sortBy(schemaName, field, ascending)` ile verileri sıralayın.
 
+- **Taşınabilir ve Basit**: Verilerinizi tek bir JSON dosyasında saklar.
+- **Auto-increment ID**: Veritabanındaki her öğeye otomatik olarak artan bir ID
+  atar.
+- **CRUD İşlemleri**: Veriyi oluşturma, okuma, güncelleme ve silme işlemlerini
+  kolayca yapabilirsiniz.
+- **Sorgulama ve Filtreleme**: Belirli kriterlere göre veri sorgulama (filter).
+- **Veri Sıralama**: Verileri belirli bir alana göre artan veya azalan şekilde
+  sıralama.
+- **Yedekleme ve Geri Yükleme**: Veritabanınızı yedekleyip, ihtiyaç duyduğunuzda
+  geri yükleyebilirsiniz.
+- **Şema Tabanlı Yapı**: Her veri kümesi için bir şema oluşturabilirsiniz.
 
+---
 
-## Kullanım
+## Kurulum
 
-```javascript
-const CevizJS = require('cevizjs');
-const db = new CevizJS('database.json');
+**CevizJS**, NPM üzerinden kolayca yüklenebilir:
 
-// Şema Oluşturma
-db.createSchema('fruits');
+```js
+npm install cevizjs
 
-// Veri Ekleme
-db.create('fruits', { name: 'Apple', color: 'Red' });
+import CevizJS from 'cevizjs';
+const db = new CevizJS('mydatabase.json');
 
-db.findById('fruits', 1)
+await db.createSchema('fruits', {
+  name: { type: 'string' },
+  color: { type: 'string' },
+});
 
-db.update('fruits', 1, { color: 'Green' });
+await db.create('fruits', { name: 'Apple', color: 'Red' });
+await db.create('fruits', { name: 'Banana', color: 'Yellow' });
 
-
-Bu yapıyı kullanarak, **CevizJS** kütüphanenizin temel fonksiyonlarını oluşturabilir ve kullanıcılar için kolayca erişilebilir hale getirebilirsiniz.
-
-
-
-
-
-
+const fruits = await db.getAll('fruits');
+console.log(fruits);
+```

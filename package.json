@@ -1,0 +1,16 @@
+{
+  "name": "cevizjs",
+  "version": "1.0.0",
+  "description": "CevizJS, JSON dosyasında veri saklayan basit bir veritabanı kütüphanesidir. Tek bir dosya ile çalışır ve verilerinizi JSON formatında saklar.",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tolga BAYRAK",
+  "license": "ISC"
+}
