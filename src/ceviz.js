@@ -1,4 +1,3 @@
-// src/CevizJS.js
 import FileService from './file-service.js';
 import SchemaService from './schema-service.js';
 import BackupService from './backup-service.js';
@@ -23,7 +22,6 @@ class CevizJS {
     await this.schemaService.create(schemaName, item);
   }
 
-  // Diğer metodlar burada olacak (getAll, update, delete, vb.)
 
   async backup(backupFilename) {
     await this.backupService.backup(backupFilename);
