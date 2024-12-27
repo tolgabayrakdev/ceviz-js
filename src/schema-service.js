@@ -15,22 +15,24 @@ class SchemaService {
         await this.fileService._writeFile(data);
     }
 
-    async create(schemaName, item) {        
+    async create(schemaName, item) {
         const data = await this.fileService._readFile();
         const schema = data.schemas[schemaName];
         if (!schema) {
             throw new Error(`Schema '${schemaName}' does not exist`);
-        }        
+        }
 
-        // Şema validasyonunu yap
-        await Validation.validate(schema.schemaDefinition, item);
-        
-        const newId = schema.lastId + 1;        
+        // Şema validasyonunu yap (mevcut verileri kontrol et)
+        await Validation.validate(schema.schemaDefinition, item, schema.data);
+
+        // ID oluşturulması
+        const newId = schema.lastId + 1;
         const newItem = { id: newId, ...item };
         schema.data.push(newItem);
         schema.lastId = newId;
         await this.fileService._writeFile(data);
     }
+
 
     async getAll(schemaName) {
         const data = await this.fileService._readFile();
