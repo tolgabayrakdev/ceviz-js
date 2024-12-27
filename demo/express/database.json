@@ -1,8 +1,27 @@
 {
   "schemas": {
     "users": {
-      "data": [],
-      "lastId": 0,
+      "data": [
+        {
+          "id": 1,
+          "name": "tolga",
+          "email": "tolga123@gmail.com",
+          "age": 25
+        },
+        {
+          "id": 2,
+          "name": "tolga",
+          "email": "tolga123@gmail.com",
+          "age": 25
+        },
+        {
+          "id": 3,
+          "name": "tolga",
+          "email": "tolga123@gmail.com",
+          "age": 25
+        }
+      ],
+      "lastId": 3,
       "schemaDefinition": {
         "id": {
           "type": "number",

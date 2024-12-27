@@ -3,6 +3,8 @@ import db from "./model.js";
 
 const app = express();
 
+app.use(express.json());
+
 
 
 app.get("/", (req, res) => {
@@ -19,12 +21,11 @@ app.get("/users", async (req, res) => {
 });
 
 app.post("/users", async (req, res) => {
-    try {
+    try {        
         const users = await db.create("users", req.body);
         res.status(201).json(users);
     } catch (error) {
         console.log(error);
-                
         res.status(400).json(error)
     }
 });

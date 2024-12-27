@@ -15,17 +15,17 @@ class SchemaService {
         await this.fileService._writeFile(data);
     }
 
-    async create(schemaName, item) {
+    async create(schemaName, item) {        
         const data = await this.fileService._readFile();
         const schema = data.schemas[schemaName];
         if (!schema) {
             throw new Error(`Schema '${schemaName}' does not exist`);
-        }
+        }        
 
         // Şema validasyonunu yap
         await Validation.validate(schema.schemaDefinition, item);
-
-        const newId = schema.lastId + 1;
+        
+        const newId = schema.lastId + 1;        
         const newItem = { id: newId, ...item };
         schema.data.push(newItem);
         schema.lastId = newId;
