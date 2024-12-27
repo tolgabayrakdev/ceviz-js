@@ -1,19 +1,28 @@
 import fs from 'fs';
 
 class FileService {
-    constructor(filename) {
-        this.filename = filename;
-    }
+  constructor(filename) {
+    this.filename = filename;
+  }
 
-    async _readFile() {
-        const rawData = await fs.promises.readFile(this.filename, 'utf-8');
-        return JSON.parse(rawData);
-    }
+  static fileExists(filename) {
+    return fs.existsSync(filename);
+  }
 
-    async _writeFile(data) {
-        const jsonData = JSON.stringify(data, null, 2);
-        await fs.promises.writeFile(this.filename, jsonData, 'utf-8');
-    }
+  static createFile(filename, initialData) {
+    const data = JSON.stringify(initialData, null, 2);
+    fs.writeFileSync(filename, data, 'utf8');
+  }
+
+  async _readFile() {
+    const data = await fs.promises.readFile(this.filename, 'utf8');
+    return JSON.parse(data);
+  }
+
+  async _writeFile(data) {
+    const jsonData = JSON.stringify(data, null, 2);
+    await fs.promises.writeFile(this.filename, jsonData, 'utf8');
+  }
 }
 
 export default FileService;

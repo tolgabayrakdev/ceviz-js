@@ -1,0 +1,82 @@
+{
+  "schemas": {
+    "users": {
+      "data": [],
+      "lastId": 0,
+      "schemaDefinition": {
+        "id": {
+          "type": "number",
+          "required": true,
+          "unique": true
+        },
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "age": {
+          "type": "number",
+          "required": true
+        },
+        "email": {
+          "type": "string",
+          "required": true,
+          "unique": true
+        }
+      }
+    },
+    "posts": {
+      "data": [],
+      "lastId": 0,
+      "schemaDefinition": {
+        "id": {
+          "type": "number",
+          "required": true,
+          "unique": true
+        },
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "content": {
+          "type": "string",
+          "required": true
+        },
+        "author": {
+          "type": "string",
+          "required": true
+        },
+        "publishedAt": {
+          "type": "date",
+          "required": true
+        }
+      }
+    },
+    "comments": {
+      "data": [],
+      "lastId": 0,
+      "schemaDefinition": {
+        "id": {
+          "type": "number",
+          "required": true,
+          "unique": true
+        },
+        "content": {
+          "type": "string",
+          "required": true
+        },
+        "author": {
+          "type": "string",
+          "required": true
+        },
+        "publishedAt": {
+          "type": "date",
+          "required": true
+        },
+        "postId": {
+          "type": "number",
+          "required": true
+        }
+      }
+    }
+  }
+}
