@@ -21,7 +21,6 @@ class SchemaService {
         if (!schema) {
             throw new Error(`Schema '${schemaName}' does not exist`);
         }
-
         // Şema validasyonunu yap (mevcut verileri kontrol et)
         await Validation.validate(schema.schemaDefinition, item, schema.data);
 
@@ -49,7 +48,7 @@ class SchemaService {
         if (!schema) {
             throw new Error(`Schema '${schemaName}' does not exist`);
         }
-        const item = schema.data.find(item => item.id === id);
+        const item = schema.data.find(item => Number(item.id) === Number(id));
         if (!item) {
             throw new Error(`Item with ID '${id}' not found`);
         }
